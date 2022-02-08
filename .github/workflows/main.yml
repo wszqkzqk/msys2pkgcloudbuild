@@ -70,12 +70,13 @@ jobs:
       - uses: actions/download-artifact@v2
         continue-on-error: true
         with:
+          name: msys2-packages
           path: C:/_/artifacts
       - uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
           tag: packages
-          artifacts: C:/_/artifacts/*/*.pkg.tar.*
+          artifacts: C:/_/artifacts/*.pkg.tar.*
           token: ${{ secrets.GITHUB_TOKEN }}
 
   release-sources:
@@ -86,10 +87,11 @@ jobs:
       - uses: actions/download-artifact@v2
         continue-on-error: true
         with:
+          name: sources
           path: C:/_/artifacts
       - uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
           tag: sources
-          artifacts: C:/_/artifacts/*/*.src.tar.*
+          artifacts: C:/_/artifacts/*.src.tar.*
           token: ${{ secrets.GITHUB_TOKEN }}
