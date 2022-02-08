@@ -22,7 +22,7 @@ build() {
 	    --prefix=/usr \
 	    --mandir=/usr/share/man \
         --build=${CHOST} \
-        --host=${CHOST} \
+        --host=${CHOST} 
 	make
 }
 
