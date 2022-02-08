@@ -41,6 +41,7 @@ for package in "${packages[@]}"; do
     execute 'Fetch keys' "$DIR/fetch-validpgpkeys.sh"
     # Ensure the toolchain is installed before building the package
     execute 'Installing the toolchain' pacman -S --needed --noconfirm --noprogressbar base-devel
+    execute 'Update hash info' updpkgsums   #wszqkzqk: Automatically update hash info
     execute 'Building binary' makepkg --noconfirm --noprogressbar --nocheck --syncdeps --rmdeps --cleanbuild
     execute 'Building source' makepkg --noconfirm --noprogressbar --allsource
     echo "::endgroup::"

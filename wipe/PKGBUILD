@@ -18,7 +18,7 @@ sha256sums=('463916370f9b35bb34419c2c0ae3dc4c0a471db32e8595afa1d14c0337b61aa0'
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	export CPPFLAGS=
-	./configure --prefix=/usr --mandir=/usr/share/man
+	./configure --host=${CHOST} --prefix=/usr --mandir=/usr/share/man
 	make
 }
 
