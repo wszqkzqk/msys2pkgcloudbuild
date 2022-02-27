@@ -19,14 +19,14 @@ sha256sums=('463916370f9b35bb34419c2c0ae3dc4c0a471db32e8595afa1d14c0337b61aa0'
 build() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
 	export CPPFLAGS=
-	./configure --host=${CHOST} \
-	    --prefix=/usr \
-	    --mandir=/usr/share/man \
-        --build=${CHOST} 
-	make
+	./configure --prefix=/usr --mandir=/usr/share/man \
+	--host=${CHOST} \
+	--target=${CHOST} \
+
+	make -j
 }
 
 package() {
 	cd "${srcdir}/${pkgname}-${pkgver}"
-	make prefix="${pkgdir}"/usr mandir="${pkgdir}"/usr/share/man install
+	make -j prefix="${pkgdir}"/mingw64 mandir="${pkgdir}"/mingw64/share/man install
 }
